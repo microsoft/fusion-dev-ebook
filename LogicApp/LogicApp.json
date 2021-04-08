@@ -1,0 +1,174 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "CheckBoilerPart": {
+                "inputs": {
+                    "method": "GET",
+                    "uri": "https://vanarsdelapim.azure-api.net/api/boilerparts/@{triggerBody()?['boilerPartId']}"
+                },
+                "runAfter": {},
+                "type": "Http"
+            },
+            "CheckReservations": {
+                "inputs": {
+                    "method": "GET",
+                    "uri": "https://vanarsdelapim.azure-api.net/api/boilerparts/@{triggerBody()?['boilerPartId']}/reserved"
+                },
+                "runAfter": {
+                    "ParseBoilerPart": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Http"
+            },
+            "CompareStock": {
+                "actions": {
+                    "PostOrder": {
+                        "inputs": {
+                            "method": "POST",
+                            "queries": {
+                                "boilerPartId": "@{triggerBody()?['boilerPartId']}",
+                                "quantity": "50"
+                            },
+                            "uri": "https://vanarsdelapim.azure-api.net/api/orders"
+                        },
+                        "runAfter": {},
+                        "type": "Http"
+                    }
+                },
+                "expression": {
+                    "and": [
+                        {
+                            "greater": [
+                                "@add(body('ParseReservations')?['totalReservations'], triggerBody()?['numberToReserve'])",
+                                "@body('ParseBoilerPart')?['numberInStock']"
+                            ]
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "ParseReservations": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "If"
+            },
+            "ParseBoilerPart": {
+                "inputs": {
+                    "content": "@body('CheckBoilerPart')",
+                    "schema": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "imageUrl": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "numberInStock": {
+                                "type": "integer"
+                            },
+                            "overview": {
+                                "type": "string"
+                            },
+                            "price": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "runAfter": {
+                    "CheckBoilerPart": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ParseJson"
+            },
+            "ParseReservations": {
+                "inputs": {
+                    "content": "@body('CheckReservations')",
+                    "schema": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "totalReservations": {
+                                "type": "integer"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "runAfter": {
+                    "CheckReservations": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ParseJson"
+            },
+            "PostReservation": {
+                "inputs": {
+                    "method": "POST",
+                    "queries": {
+                        "boilerPartId": "@{triggerBody()?['boilerPartId']}",
+                        "engineerId": "@triggerBody()?['engineerId']",
+                        "quantityToReserve": "@{triggerBody()?['numberToReserve']}"
+                    },
+                    "uri": "https://vanarsdelapim.azure-api.net/api/reservations"
+                },
+                "runAfter": {
+                    "CompareStock": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Http"
+            },
+            "Response": {
+                "inputs": {
+                    "body": "@body('PostReservation')",
+                    "headers": {
+                        "content-type": "application/json"
+                    },
+                    "statusCode": 200
+                },
+                "kind": "Http",
+                "runAfter": {
+                    "PostReservation": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Response"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {},
+        "triggers": {
+            "manual": {
+                "inputs": {
+                    "schema": {
+                        "properties": {
+                            "boilerPartId": {
+                                "type": "integer"
+                            },
+                            "engineerId": {
+                                "type": "string"
+                            },
+                            "numberToReserve": {
+                                "type": "integer"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "kind": "Http",
+                "type": "Request"
+            }
+        }
+    },
+    "parameters": {}
+}

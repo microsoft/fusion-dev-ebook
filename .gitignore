@@ -1,0 +1,5 @@
+#Ignore compiled files
+/obj
+/bin
+#Ignore Entity Framework migrations
+/Migrations
