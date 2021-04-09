@@ -96,9 +96,10 @@ You can set up these databases in Azure SQL Database by following these steps:
 
 You can either follow the steps in the guide to build the Web API, or you can use the completed version provided in this repository. To build and deploy the completed version, perform the following instructions:
 
-1. In your local **PowerShell** instance, start Visual Studio Code:
+1. In your local **PowerShell** instance, start Visual Studio Code in the WebAPI folder:
 
     ```powershell
+    cd WebAPI
     code .
     ```
 
