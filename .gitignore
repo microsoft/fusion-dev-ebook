@@ -1,5 +1,5 @@
 #Ignore compiled files
-/obj
-/bin
+/WebAPI/obj
+/WebAPI/bin
 #Ignore Entity Framework migrations
-/Migrations
+/WebAPI/Migrations
