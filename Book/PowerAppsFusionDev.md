@@ -3337,7 +3337,7 @@ Preeti can now update the Azure API Management service used by the VanArsdel app
 
 15. Open another page in your web browser and go to the URL **https://*\<APIM name\>*.azure-api.net/api/boilerparts/1/reserved** where **\<APIM name\>** is the name of your API service. Verify that you get a response similar to the following:
 
-    ```json
+    ```js
     {"id":1,"totalReservations":5}
     ```
 
@@ -3383,7 +3383,7 @@ To create the Logic App, Kiana uses the following steps:
 
 10. In the **Request Body JSON Schema** box, enter the following schema, and then select **+ New step**:
 
-    ```json
+    ```js
     {
         "type": "object",
         "properties": {
@@ -3408,7 +3408,7 @@ To create the Logic App, Kiana uses the following steps:
 
     ![SelectH tthe HTTP operation option][211]
 
-    The Logic App will call the **BoilerParts{id} operation of the Web API to retrieve information about the boiler part provided by the request from the Power Apps app.
+    The Logic App will call the **BoilerParts{id}** operation of the Web API to retrieve information about the boiler part provided by the request from the Power Apps app.
 
 12. In the **Actions** pane, select the **HTTP** action:
 
@@ -3433,7 +3433,7 @@ To create the Logic App, Kiana uses the following steps:
 
 17. In the **Content** box for the **ParseBoilerPart** action, in the **Dynamic Content** box, select **Body**. In the **Schema** box, enter the following JSON schema, and then select **+ New step**:
 
-    ```json
+    ```js
     {
         "type": "object",
         "properties": {
@@ -3487,7 +3487,7 @@ To create the Logic App, Kiana uses the following steps:
 
 25. Enter the following schema, and then select **+ New step**:
 
-    ```json
+    ```js
     {
         "type": "object",
         "properties": {
