@@ -3149,7 +3149,7 @@ To support this feature, Kiana has to update the Web API with a method that fetc
 
 5.  Open the **InventoryContext.cs** file in the **Models** folder, and add the statements shown below to the **InventoryContext** class:
 
-    ```
+    ```csharp
     public class InventoryContext : DbContext
     {
         public InventoryContext(DbContextOptions\<InventoryContext\> options)
@@ -3446,7 +3446,7 @@ To create the Logic App, Kiana uses the following steps:
             "categoryId": {
                 "type": "string"
             },
-             "price": {
+            "price": {
                 "type": "number"
             },
             "overview": {
@@ -3456,7 +3456,7 @@ To create the Logic App, Kiana uses the following steps:
                 "type": "integer"
             },
             "imageUrl": {
-                "type": "string"
+                "type": "string"
             },
         }
     }
@@ -3492,10 +3492,10 @@ To create the Logic App, Kiana uses the following steps:
         "type": "object",
         "properties": {
             "id": {
-                "type": "integer"
+                    "type": "integer"
             },
             "totalReservations": {
-                "type": "integer"
+                    "type": "integer"
             }
         }
     }
