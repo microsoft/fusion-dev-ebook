@@ -551,7 +551,7 @@ You can follow these steps to create the Appointments Power App:
 
     Notice that removing the **Image1** control causes several errors on the screen because the widths and location of the **Title1** control reference the **Image** control. You'll fix these problems in the next step.
 
-7.  In the **Tree view** pane, select the **Title1** control under **BrowseGallery1**. Change the value in the **X** property to **16**. Change the formula in the **Width** property to **Parent.TemplateWidth -- 104**. This should resolve the errors for the screen.
+7.  In the **Tree view** pane, select the **Title1** control under **BrowseGallery1**. Change the value in the **X** property to **16**. Change the formula in the **Width** property to **Parent.TemplateWidth - 104**. This should resolve the errors for the screen.
 
 8.  In the **Tree view** pane, select the **Body1** control under **BrowseGallery1**. This control currently displays the contact telephone details for the customer. Change the value in the **Text** property to **ThisItem.'Customer Name'** (including the single quotes).
 
@@ -562,7 +562,7 @@ You can follow these steps to create the Appointments Power App:
 9.  In the **Tree view** pane, select the **BrowseGallery1** control. Using the formula bar examine the expression in the **Items** property. The control searches for appointments using the appointment date, time, and contact number. Change this formula to search the customer name rather than the contact number:
 
     ```
-    SortByColumns(Search([\@Appointments], TextSearchBox1.Text, "Appointment\_x0020\_Date","Appointment\_x0020\_Time","Customer\_x0020\_Name"), "Appointment\_x0020\_Date", If(SortDescending1, Descending, Ascending)).
+    SortByColumns(Search([@Appointments], TextSearchBox1.Text, "Appointment_x0020_Date","Appointment_x0020_Time","Customer_x0020_Name"), "Appointment_x0020_Date", If(SortDescending1, Descending, Ascending)).
     ```
 
 Notice that the appointments are ordered by date and then time (the first two fields displayed).
@@ -2573,7 +2573,7 @@ Maria edits the app in Power Apps Studio and performs the following tasks:
 
     -   Text: **ThisItem.Subject**
     -   X: **24**
-    -   Width: **Parent.TemplateWidth -- 104**
+    -   Width: **Parent.TemplateWidth - 104**
 
 10. Select the **Subtitle2** control. Set the **Text** property to **ThisItem.Body**.
 
@@ -2811,7 +2811,7 @@ Maria's next task is to add a screen that enables a technician or engineer to sa
     -   Image: **Parent.Default**
     -   X: **30**
     -   Y: **DataCardKey*X*.Y + DataCardKey*X*.Height + 150** (where **DataCardKey*X*** is the data card containing the **Image*X*** control)
-    -   Width: **Parent.Width -- 60**
+    -   Width: **Parent.Width - 60**
     -   Height: **400**
 
     > **NOTE:**
@@ -3566,7 +3566,7 @@ To create the Logic App, Kiana uses the following steps:
 41. Set the following properties for the **Response** action:
 
     -   Status Code: **200**
-    -   Headers: Key -- **content-type**, Value -- **application/json**
+    -   Headers: Key - **content-type**, Value - **application/json**
     -   Body: In the **Dynamic content** box, select the **Body** element from the **PostReservation** request. This is the body returned when the reservation is made:
 
     ![Response message sent by the Logic App][223]
@@ -3810,7 +3810,7 @@ Fusion development is not a strict methodology; rather, it's an approach and phi
 
 Fusion development combines the technical and business skills of an organization's employees to design and build applications. This approach values the insights and abilities of the different members of the team. It utilizes their specific insights into the business requirements and technical challenges required to implement a solution. The synergy afforded by fusion development enables efficient communication between different team members and enables them to iterate quickly to produce a functional system.
 
-In this guide, you've seen how the staff at VanArsdel followed a fusion development approach. They produced an app that meets the expectations of the users represented by Caleb, the technician, Maria, the inventory manager, and Malik, who schedules engineers. Preeti is also satisfied that the system is safe and maintainable. The project was completed in record time---from the initial discussions between Caleb and Maria, to the rollout to all technicians.
+In this guide, you've seen how the staff at VanArsdel followed a fusion development approach. They produced an app that meets the expectations of the users represented by Caleb, the technician, Maria, the inventory manager, and Malik, who schedules engineers. Preeti is also satisfied that the system is safe and maintainable. The project was completed in record time - from the initial discussions between Caleb and Maria, to the rollout to all technicians.
 
 The VanArsdel team has now experienced how fusion development teams work and is excited to keep collaborating on future projects.
 
