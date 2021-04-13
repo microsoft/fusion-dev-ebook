@@ -562,7 +562,7 @@ You can follow these steps to create the Appointments Power App:
 9.  In the **Tree view** pane, select the **BrowseGallery1** control. Using the formula bar examine the expression in the **Items** property. The control searches for appointments using the appointment date, time, and contact number. Change this formula to search the customer name rather than the contact number:
 
     ```
-    SortByColumns(Search([\@Appointments], TextSearchBox1.Text, "Appointment\_x0020\_Date","Appointment\_x0020\_Time","Customer\_x0020\_Name"), "Appointment\_x0020\_Date", If(SortDescending1, Descending, Ascending)).
+    SortByColumns(Search([@Appointments], TextSearchBox1.Text, "Appointment_x0020_Date","Appointment_x0020_Time","Customer_x0020_Name"), "Appointment_x0020_Date", If(SortDescending1, Descending, Ascending)).
     ```
 
 Notice that the appointments are ordered by date and then time (the first two fields displayed).
@@ -2802,7 +2802,7 @@ Maria's next task is to add a screen that enables a technician or engineer to sa
 
 15. In the **Tree view** pane, select the **EditAppointment** screen.
 
-16. Expand the **EditForm*X*** control. Under the **Image\_DataCardX** control, remove the **AddPictureX** control:
+16. Expand the **EditFormX*** control. Under the **Image\_DataCardX** control, remove the **AddPictureX** control:
 
     ![Remove the AddPicture control][176]
 
@@ -2811,7 +2811,7 @@ Maria's next task is to add a screen that enables a technician or engineer to sa
     -   Image: **Parent.Default**
     -   X: **30**
     -   Y: **DataCardKey*X*.Y + DataCardKey*X*.Height + 150** (where **DataCardKey*X*** is the data card containing the **Image*X*** control)
-    -   Width: **Parent.Width -- 60**
+    -   Width: **Parent.Width - 60**
     -   Height: **400**
 
     > **NOTE:**
