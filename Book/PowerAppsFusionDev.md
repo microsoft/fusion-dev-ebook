@@ -2802,7 +2802,7 @@ Maria's next task is to add a screen that enables a technician or engineer to sa
 
 15. In the **Tree view** pane, select the **EditAppointment** screen.
 
-16. Expand the **EditFormX*** control. Under the **Image\_DataCardX** control, remove the **AddPictureX** control:
+16. Expand the **EditForm*X*** control. Under the **Image\_DataCardX** control, remove the **AddPictureX** control:
 
     ![Remove the AddPicture control][176]
 
