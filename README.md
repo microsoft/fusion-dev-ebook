@@ -1,6 +1,6 @@
 # Field Engineer Web API
 
-This repo stores the code for a simple Web API that presents information helpful to heating engineers working in the field to maintain and fix furnaces in domestic settings. This API supports the document **The fusion development approach to building power apps**. In the document, the development of a Power App, which integrates with this Web API, is described.
+This repo stores the code for a simple Web API that presents information helpful to heating engineers working in the field to maintain and fix furnaces in domestic settings. This API supports the document **The fusion development approach to building power apps**. In the document, the development of Power Apps, which integrates with this Web API, is described.
 
 This repo also includes the JSON definition for the Logic App created in the document.
 
@@ -161,9 +161,9 @@ To see a list of all open orders, use:
 curl -X GET "https://<yourwebapp>.azurewebsites.net/api/Orders/Open" -H  "accept: text/plain"
 ```
 
-## Notes about the Power Apps app and the Azure Logic App
+## Notes about the app and the Azure Logic App
 
-The Power Apps app is available as an exported Zip package in the PowerApp folder. You can import the app from the **Apps** screen at https://make.powerapps.com; select the **Import canvas app** command in the toolbar.
+The app is available as an exported Zip package in the PowerApp folder. You can import the app from the **Apps** screen at https://make.powerapps.com; select the **Import canvas app** command in the toolbar.
 
 The app does not include the custom connectors for the various data sources. This is because you must create them to connect to your implementation of the services (Azure API Management, Azure Search, and Azure Logic Apps) that provide the data. Follow the instructions in the guide to create these connectors and configure the app.
 
