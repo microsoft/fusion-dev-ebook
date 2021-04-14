@@ -78,11 +78,11 @@ Table of Contents
     - [Deploying the Web API to Azure: Field Inventory Management](#deploying-the-web-api-to-azure-field-inventory-management)
     - [Building and Deploying the Web API: Field Knowledgebase](#building-and-deploying-the-web-api-field-knowledgebase)
     - [Building and Deploying the Web API: Field Scheduling](#building-and-deploying-the-web-api-field-scheduling)
-- [Chapter 6: Using the Web API in the Power App](#chapter-6-using-the-web-api-in-the-power-app)
+- [Chapter 6: Using the Web API in Power Apps](#chapter-6-using-the-web-api--power-apps)
     - [Understanding the IT Operations Management Requirements for the Web API](#understanding-the-it-operations-management-requirements-for-the-web-api)
     - [Creating an Azure API Management Service](#creating-an-azure-api-management-service)
     - [Publishing the Web API through APIM](#publishing-the-web-api-through-apim)
-    - [Connecting to APIM from the Power App](#connecting-to-apim-from-the-power-app)
+    - [Connecting to APIM from Power Apps](#connecting-to-apim-from-power-apps)
     - [Updating the App to use the Connector: Field Inventory Management](#updating-the-app-to-use-the-connector-field-inventory-management)
     - [Updating the App to use the Connector: Field Scheduling and Notes](#updating-the-app-to-use-the-connector-field-scheduling-and-notes)
     - [Creating the Azure Cognitive Search Service for the Field Knowledgebase](#creating-the-azure-cognitive-search-service-for-the-field-knowledgebase)
@@ -131,7 +131,7 @@ To perform the steps described in this guide, you require the following licenses
 
     -   The **SQL Server extension**, at <https://aka.ms/AAbvgm5>.
 
-The complete code for the Web API and the Power App is available in GitHub at <https://github.com/microsoft/fusion-dev-ebook>
+The complete code for the Web API and the app is available in GitHub at <https://github.com/microsoft/fusion-dev-ebook>
 
 Clone this repository locally on your computer and read the README.md file carefully. Before continuing with this chapter, make sure you have created the Azure SQL Database Server and databases required by the app using the instructions in the README.md file.
 
@@ -158,7 +158,7 @@ A common use case for a custom connector is to enable a app to access other syst
 > **NOTE:**
 >  Other parts of the Microsoft Power Platform can benefit from a similar approach. For example, a citizen developer might implement business logic in a low code manner through Microsoft Power Automate and Robotic Process Automation, then utilize Web APIs to integrate other services into this logic. You can also build chatbots with Microsoft Power Virtual Agents that combine AI capabilities with data and services exposed through Web APIs.
 
-Fusion Development with Power Apps is about combining the worlds of the citizen developer, the professional developer, and the other parties instrumental in building and using applications to further the objectives of the business. A citizen developer can express the business need quickly by building a Power App, and work with a professional developer to *fill in the gaps*. End users can provide feedback on missing functionality and any changes required. The whole process is highly iterative, perhaps more so than many other Agile processes, with the velocity of possibly several iterations a day.
+Fusion Development with Power Apps is about combining the worlds of the citizen developer, the professional developer, and the other parties instrumental in building and using applications to further the objectives of the business. A citizen developer can express the business need quickly by building an app, and work with a professional developer to *fill in the gaps*. End users can provide feedback on missing functionality and any changes required. The whole process is highly iterative, perhaps more so than many other Agile processes, with the velocity of possibly several iterations a day.
 
 > **NOTE:**
 >  Gartner describes *digital fusion teams* as "distributed and multidisciplinary digital business teams that blend technology and other types of domain expertise. At least 84% of companies and 59% of government entities have fusion teams." (Source: 2019 Gartner Digital Business Teams Survey)
@@ -185,7 +185,7 @@ When a technician arrives at a customer's home and finds they don't have a part 
 
 A solution is to create a app that allows the field technician to check inventory from the field and place an order immediately if that's necessary. The app will interface with a Web API running in Azure, that provides controlled access to the legacy inventory management system. The office inventory manager can connect to the same legacy system through a desktop app running on-premises. The desktop app enables the office inventory manager to see what parts are currently in stock, and when to place orders to replenish areas that are running low.
 
-![Field Inventory Management Power Apps app][5]
+![Field Inventory Management app][5]
 
 ## Field Knowledgebase
 
@@ -199,7 +199,7 @@ It's impossible for one single technician to know everything about every model o
 
 A solution is to capture the information about furnaces and air conditioners, problems that have occurred, and how they were fixed, in a knowledge base. An app could allow a technician to record comments about a job and the repairs performed while still at the customer's premises. The same app could provide an interface that allows the technician to query the knowledge base about useful information that other technicians may have addressed on similar jobs. The knowledge base itself could be implemented as a database with Azure Cognitive Search providing the lookup facility, based on one or more key words.
 
-![Field Knowledgebase Power Apps app][6]
+![Field Knowledgebase app][6]
 
 ## Field Scheduling and Notes
 
@@ -219,7 +219,7 @@ There are several obvious drawbacks to the current scheduling strategy:
 
 VanArsdel could use an app that acts as a front end to the legacy system. It would enable the office receptionist staff to record appointments and cancellations, and add any additional notes to customer records. An app that's available to technicians can provide access to their appointments schedule in real time and see any changes. The same app should enable technicians to enter notes about a finished job and save this information back to the legacy system.
 
-![Field Scheduling Power Apps app][7]
+![Field Scheduling app][7]
 
 ## Fusion Development Team Members
 
@@ -241,7 +241,7 @@ Chapter 3: Building a Low-code Prototype
 > **NOTE:** 
 > The previous chapter referenced the mobile app used by the field technicians and engineers, and desktop Power Apps used by on-premises staff. The following chapters focus on the design, implementation, and rollout of the mobile Power Apps. The desktop Power Apps are left as an exercise for the reader.
 
-Kiana is skeptical of low-code solutions and Power Apps, but she and Maria decide to build an app together to help the field technicians check inventory (and order parts if necessary), query the knowledge base, and check their next appointment while out of the office, on service calls. Kiana and Maria plan to use this experience to explore how to add controls and use formulas in a Power App.
+Kiana is skeptical of low-code solutions and Power Apps, but she and Maria decide to build an app together to help the field technicians check inventory (and order parts if necessary), query the knowledge base, and check their next appointment while out of the office, on service calls. Kiana and Maria plan to use this experience to explore how to add controls and use formulas in Power Apps.
 
 Although building an initial low-code prototype is primarily a typical citizen developer task, Kiana decides to pay attention to the process to ensure that she understands how the app is constructed. She needs this information to enable her to help Maria integrate the real-world data sources, Web APIs, and other services required into the app.
 
@@ -259,9 +259,9 @@ Maria is very familiar with the existing inventory management system and underst
 > **NOTE:**
 > If you are a relational database designer, you'll notice that the Excel spreadsheet presents a denormalized view of the data. For example, in a relational database, **CategoryID** would most likely be a numeric identifier that references a separate table containing the details of the category, including the name.
 
-The URLs in the Image column are currently just placeholders. In the completed Power App, these URLs will be replaced with the addresses of real image files.
+The URLs in the Image column are currently just placeholders. In the completed app, these URLs will be replaced with the addresses of real image files.
 
-Follow these steps to create the Power App:
+Follow these steps to create the app:
 
 1.  Sign in to Power Apps Studio at <http://make.powerapps.com>.
 
@@ -492,7 +492,7 @@ Maria decides to create a new screen based on the **List** template available in
 
 ## Item 3: Field Scheduling and Notes
 
-Maria works with Malik, the office receptionist, to design the interface for the field scheduling and appointments part of the Power App. Malik provides an Excel spreadsheet with some sample data that Maria can use to build the appointments screen. The spreadsheet contains a table with the following columns:
+Maria works with Malik, the office receptionist, to design the interface for the field scheduling and appointments part of the app. Malik provides an Excel spreadsheet with some sample data that Maria can use to build the appointments screen. The spreadsheet contains a table with the following columns:
 
 -   ID (the appointment ID)
 -   Customer ID (a unique identifier for the customer)
@@ -518,12 +518,12 @@ Maria stores this spreadsheet in her OneDrive account with the name **Appointmen
 
 Maria wants to build the appointments part of the app directly from the Excel spreadsheet. She decides to follow a similar approach to that of the Field Inventory Management functionality, except that this time the engineer will be allowed to create and edit appointments.
 
-Maria decides to build the appointments screens, initially as a separate Power App. This way, she can use Power Apps Studio to generate much of the app automatically. Power Apps Studio doesn't currently let you generate additional screens from a data connection in an existing app. When Maria has created and tested the screens, she will copy them to the Field Inventory and Knowledgebase app.
+Maria decides to build the appointments screens, initially as a separate app. This way, she can use Power Apps Studio to generate much of the app automatically. Power Apps Studio doesn't currently let you generate additional screens from a data connection in an existing app. When Maria has created and tested the screens, she will copy them to the Field Inventory and Knowledgebase app.
 
 > **NOTE:** 
 > An alternative approach is to add the **Appointments** table in the Excel spreadsheet as a second data source to the existing app and then hand-craft the screens for appointments. Maria opted to generate the new screens from the spreadsheet and copy the screens; she is currently more familiar with the concepts of *copy and paste* than building screens manually, although she will gradually learn how to create screens from scratch as the process of building this app progresses.
 
-You can follow these steps to create the Appointments Power App:
+You can follow these steps to create the Appointments app:
 
 1.  In Azure Power Apps Studio, select the **File** menu in the toolbar.
 
@@ -693,7 +693,7 @@ Maria has built two apps, but she wants to combine them into a single app. To do
 
 1.  Open a new browser window and sign in to Power Apps Studio with your account details.
 
-2.  In the left pane, select **Apps**, select the **VanArdselApp** Power App, and then select **Edit.**
+2.  In the left pane, select **Apps**, select the **VanArdselApp** app, and then select **Edit.**
 
     ![Open the VanArsdel app][60]
 
@@ -754,9 +754,9 @@ Maria has built two apps, but she wants to combine them into a single app. To do
 
 ## Adding a Home Screen to the app
 
-The final stage is to add a **Home** screen to the Power App. The **Home** screen will enable the engineer to move between the different parts of the app (inventory management, knowledge base, and appointments).
+The final stage is to add a **Home** screen to the app. The **Home** screen will enable the engineer to move between the different parts of the app (inventory management, knowledge base, and appointments).
 
-1.  In the **VanArsdelApp** Power App, in the toolbar, select **New screen**, and then select **Blank**.
+1.  In the **VanArsdelApp** app, in the toolbar, select **New screen**, and then select **Blank**.
 
 2.  In the **Tree view** pane, change the name of the screen (**Screen2**) to **Home**.
 
@@ -851,7 +851,7 @@ Finally, you can test the app.
 
 1.  On the **File** menu, on the **Save** tab, enter the text **Complete version with Home screen** in the **Version note** box, and select **Save**.
 
-2.  Select the back arrow icon to return to the **Home** screen and press **F5** to run the Power App.
+2.  Select the back arrow icon to return to the **Home** screen and press **F5** to run the app.
 
 3.  Verify that the **Home** screen for the app appears.
 
@@ -898,7 +898,7 @@ Dataverse contains a collection of open-sourced, standardized, extensible data e
 In Dataverse, each entity is tabular, with a default set of columns also defined by the Open Data Initiative. You can view the definition of a table using the *Edit* command for that entity in the list of tables. You can extend a table with your own columns, but as before, it's good practice to use existing columns wherever possible. The example below shows the default definition of the *Account* table.
 
 > **NOTE:**
-> You can modify the display name of tables and columns without changing their names. The display names are the default labels that appear on forms in a Power App.
+> You can modify the display name of tables and columns without changing their names. The display names are the default labels that appear on forms in Power Apps.
 
 ![The Account table in Dataverse][77]
 
@@ -986,11 +986,11 @@ The knowledge base part of the app currently just contains a placeholder **Brows
 -   When all matching tips have been found, the technician can select a tip to view its details.
 -   A technician can also add new tips to the knowledge base, as well as add notes and comments to existing tips.
 
-    The knowledge base is large and growing, and querying across multiple tables and columns can involve complex logic that requires significant compute power. To reduce the load on the Web API, Kiana decides to use Azure Search to provide the search functionality, as described earlier. To support the Power App, Kiana decides that the following operations are required from the Web API:
+    The knowledge base is large and growing, and querying across multiple tables and columns can involve complex logic that requires significant compute power. To reduce the load on the Web API, Kiana decides to use Azure Search to provide the search functionality, as described earlier. To support the app, Kiana decides that the following operations are required from the Web API:
 
 -   Find the details of a specified knowledge base tip from the **Tips** table.
 -   Update an existing knowledge base tip in the **Tips** table.
--   Add a new knowledge base tip to the **Tips** table, which might also involve adding rows to the **BoilerParts** and **Engineers** tables if the specified part or engineer currently have no tips recorded against them. The routine that actually performs the logic behind adding a new tip will be implemented as an Azure Logic app called from the Power Apps app.
+-   Add a new knowledge base tip to the **Tips** table, which might also involve adding rows to the **BoilerParts** and **Engineers** tables if the specified part or engineer currently have no tips recorded against them. The routine that actually performs the logic behind adding a new tip will be implemented as an Azure Logic app called from the app.
 
 ## Defining the Web API operations: Field Scheduling
 
@@ -1003,7 +1003,7 @@ Scheduling technician appointments requires not only querying, adding, and remov
 > **NOTE:**
 > The database actually contains a fourth table named **AppointmentsStatus**. This table contains a list of valid appointment statuses and is simply a lookup used by other parts of the existing appointments system.
 
-Kiana decides that the following operations would be useful for the Field Scheduling part of the Power App:
+Kiana decides that the following operations would be useful for the Field Scheduling part of the app:
 
 -   Find all appointments for a specified technician.
 -   Find all appointments for the current day for a specified technician.
@@ -2003,9 +2003,9 @@ To create the Web API operations for the Field Scheduling part of the system, Ki
 
 13. When deployment is complete, browse to the website but change the URL in the browser to **https://*\<webapp name\>*.azurewebsites.net/swagger**. Verify that the operations for the **Appointments**, **Customer**, and **ScheduleEngineer** controllers are now available.
 
-The Web API is now ready to be incorporated into the Power App.
+The Web API is now ready to be incorporated into the app.
 
-Chapter 6: Using the Web API in the Power App
+Chapter 6: Using the Web API in Power Apps
 =============================================
 
 Maria and Kiana are ready to combine the app with the Web API. However, before proceeding, they decide to consult with Preeti, the IT Operations Manager.
@@ -2103,7 +2103,7 @@ After the APIM service was created, Preeti published the Web API to make it acce
 
     ![Response from testing GetAppointments API][111]
 
-## Connecting to APIM from the Power App
+## Connecting to APIM from Power Apps
 
 Kiana and Maria can now work together to connect the app to the Web API through the APIM service.
 
@@ -2167,9 +2167,9 @@ The prototype app used Excel spreadsheets for the data sources. Now the custom c
 
 ## Updating the App to use the Connector: Field Inventory Management
 
-Now that the connection has been added to the Power App, Maria can modify the screens to use it to replace the Excel spreadsheets. This involves working through each screen methodically and changing the data source. No other changes should be necessary. She starts with the **BrowseParts** and **PartDetails** screens:
+Now that the connection has been added to the app, Maria can modify the screens to use it to replace the Excel spreadsheets. This involves working through each screen methodically and changing the data source. No other changes should be necessary. She starts with the **BrowseParts** and **PartDetails** screens:
 
-1.  On the **Home** screen of the Power App, select the **Parts** button. Set the **OnSelect** action property to the following formula:
+1.  On the **Home** screen of the app, select the **Parts** button. Set the **OnSelect** action property to the following formula:
 
     ```
     ClearCollect(partsCollection, FieldEngineerAPI.getapiboilerparts());
@@ -2228,11 +2228,11 @@ Now that the connection has been added to the Power App, Maria can modify the sc
 
 15. Change the **Default** property of the **Image\_DataCard1** control to **ThisItem.imageUrl**.
 
-16. In the left pane, on the **Data** tab, right-click the **Table1** data connection, and then select **Remove** to delete it from the Power App. This connection is no longer required.
+16. In the left pane, on the **Data** tab, right-click the **Table1** data connection, and then select **Remove** to delete it from the app. This connection is no longer required.
 
     ![Remove the Table1 connection][127]
 
-17. Save the Power Apps app.
+17. Save the app.
 
     > **NOTE:**
     > You can quickly save the app without using the **File** menu by pressing **Ctrl + S**
@@ -2245,7 +2245,7 @@ Now that the connection has been added to the Power App, Maria can modify the sc
 
 Maria continues with the **BrowseAppointments**, **AppointmentDetails**, and **EditAppointment** screens. The data presented by these screens currently originates from the **Appointments** table in another Excel spreadsheet.
 
-1.  On the **Home** screen of the Power App, set the **OnVisible** action to the following formula:
+1.  On the **Home** screen of the app, set the **OnVisible** action to the following formula:
 
     ```
     ClearCollect(appointmentsCollection, Sort(Filter(FieldEngineerAPI.getapiappointments(), DateDiff(Today(), startDateTime) >= 0), startDateTime))
@@ -2365,9 +2365,9 @@ This formula displays the time element of the **startDateTime** field.
     Navigate(AppointmentDetails, ScreenTransition.None);
     ```
 
-22. In the left pane, on the **Data** tab, right-click the **Appointments** data connection, and then select **Remove** to delete it from the Power App.
+22. In the left pane, on the **Data** tab, right-click the **Appointments** data connection, and then select **Remove** to delete it from the app.
 
-23. Save the Power Apps app.
+23. Save the app.
 
 24. Press **F5** to preview the app. From the **Home** screen, go to the **Appointments** screen, select and edit an appointment, then save the changes. Verify that the appointment is updated.
 
@@ -2532,7 +2532,7 @@ Kiana can now create a custom connector that Power Apps uses to send search requ
 
 ## Updating the App to use Azure Cognitive Search: Field Knowledgebase
 
-Maria can now use the custom connector in the Power App. But first, she requires a key that grants her the privileges required to connect to the Azure Cognitive Search service. Preeti obtains the key from the **Keys** page for the service in the Azure portal, and gives it to Maria:
+Maria can now use the custom connector in the app. But first, she requires a key that grants her the privileges required to connect to the Azure Cognitive Search service. Preeti obtains the key from the **Keys** page for the service in the Azure portal, and gives it to Maria:
 
 ![Search Service key in the Azure portal][154]
 
@@ -2586,7 +2586,7 @@ Maria edits the app in Power Apps Studio and performs the following tasks:
 
 12. Close the preview window and return to Power Apps Studio.
 
-13. In the **Tree view** pane, right-click the **PartDetails** screen, and select **Duplicate screen**. This action will add another screen to the Power App, named **PartDetails\_1**:
+13. In the **Tree view** pane, right-click the **PartDetails** screen, and select **Duplicate screen**. This action will add another screen to the app, named **PartDetails\_1**:
 
     ![Duplicate the PartDetails screen][159]
 
@@ -2638,7 +2638,7 @@ Maria edits the app in Power Apps Studio and performs the following tasks:
 
 25. In the **Tree view** pane, select the **Knowledgebase** screen, and then select the **BrowseGalleryX** control. Change the **OnSelect** action property to **Navigate(KnowledgebaseDetails, ScreenTransition.None)**. This action displays the details screen for the knowledge base article when the user selects the **\>** icon for an entry in the browse screen.
 
-26. Save the Power Apps app.
+26. Save the app.
 
 27. Press **F5** to preview the app. On the **Knowledgebase** screen, enter a search term and press **Enter**. Select an article and verify that its details are displayed. Verify that the **Back** icon returns the user to the browse screen.
 
@@ -2658,11 +2658,11 @@ Kiana and Maria are excited to show the inventory management app to Caleb, the f
 
 -   Order parts from the **Part Details** screen.
 
-    Additionally, the image control on the **Part Details** screen displays the images stored at a specified URL. Currently the URLs in the data are simply placeholders. Like the photographs for the appointment screen, Kiana and Preeti need to determine the best place to store images so they're available to the Power App.
+    Additionally, the image control on the **Part Details** screen displays the images stored at a specified URL. Currently the URLs in the data are simply placeholders. Like the photographs for the appointment screen, Kiana and Preeti need to determine the best place to store images so they're available to the app.
 
 ## Adding a Photograph to an Appointment
 
-Photographs need to be stored somewhere accessible by the Power App. For performance and security reasons, Preeti doesn't want photographs to be saved in OneDrive or in Azure SQL Database. Instead, she and Kiana decide to use Azure Blob Storage. Blob Storage is optimized for holding large binary objects, and is robust, with built-in security. Power Apps has a connector that allows access to Blob Storage. Maria suggests adding a new picture-taking screen, improving the user experience for Caleb.
+Photographs need to be stored somewhere accessible by the app. For performance and security reasons, Preeti doesn't want photographs to be saved in OneDrive or in Azure SQL Database. Instead, she and Kiana decide to use Azure Blob Storage. Blob Storage is optimized for holding large binary objects, and is robust, with built-in security. Power Apps has a connector that allows access to Blob Storage. Maria suggests adding a new picture-taking screen, improving the user experience for Caleb.
 
 > **NOTE:**
 > For detailed information, visit the **Azure Blob Storage** page at <https://azure.microsoft.com/services/storage/blobs/>.
@@ -2703,7 +2703,7 @@ Preeti creates the Blob Storage account from the Azure portal:
 
     ![Storage account access keys][165]
 
-Preeti gives the storage account name and key to Kiana, who uses this information to create a custom connector for the Power App:
+Preeti gives the storage account name and key to Kiana, who uses this information to create a custom connector for the app:
 
 1.  Sign in to Power Apps Studio at <http://make.powerapps.com>.
 
@@ -2729,7 +2729,7 @@ Maria can use this connection to Azure Blob Storage in the app to save and retri
 
     ![Search for the Blob Storage connector][169]
 
-3.  In the **Azure Blob Storage** dialog box, select the **Azure Blob Storage** connector to add it to your Power App:
+3.  In the **Azure Blob Storage** dialog box, select the **Azure Blob Storage** connector to add it to your app:
 
     ![Add Blob Storage connection][170]
 
@@ -2858,7 +2858,7 @@ To test the app:
 
 ## Displaying Images of Parts
 
-Having determined that Azure Blob Storage is an ideal location for saving pictures associated with appointments, Preeti and Kiana decide that they should use the same approach for storing the images of parts. A key advantage of this approach is that it doesn't require any modifications to the Power Apps app. The app reuses the same storage account and the same connection. As a separate migration exercise, they can:
+Having determined that Azure Blob Storage is an ideal location for saving pictures associated with appointments, Preeti and Kiana decide that they should use the same approach for storing the images of parts. A key advantage of this approach is that it doesn't require any modifications to the app. The app reuses the same storage account and the same connection. As a separate migration exercise, they can:
 
 1.  Create a new Blob container.
 
@@ -3032,9 +3032,9 @@ The custom component is complete. Maria creates a new screen to display the appo
     -   Appointment Date: **startDateTime**
     -   Notes: **notes**
 
-17. Save the Power Apps app.
+17. Save the app.
 
-To test the Power Apps app:
+To test the Power Apps:
 
 1.  In the **Tree view** pane, select the **Home** screen.
 
@@ -3341,7 +3341,7 @@ Preeti can now update the Azure API Management service used by the VanArsdel app
     {"id":1,"totalReservations":5}
     ```
 
-The updated Web API is now available. In theory, Kiana could create a new custom connector for the updated Web API and add it to the app. The app could then implement its own logic to determine how many items of the specified product are currently in stock, how many are reserved, compare the results to the number of items required, place an order for more stock if necessary, or reserve items from the existing stock. However, this kind of logic is better implemented in an Azure Logic App. The Power Apps app can call the Logic App through a custom connector when a technician wishes to reserve or order a part.
+The updated Web API is now available. In theory, Kiana could create a new custom connector for the updated Web API and add it to the app. The app could then implement its own logic to determine how many items of the specified product are currently in stock, how many are reserved, compare the results to the number of items required, place an order for more stock if necessary, or reserve items from the existing stock. However, this kind of logic is better implemented in an Azure Logic App. The app can call the Logic App through a custom connector when a technician wishes to reserve or order a part.
 
 To create the Logic App, Kiana uses the following steps:
 
@@ -3402,13 +3402,13 @@ To create the Logic App, Kiana uses the following steps:
 
     ![Logic App request schema][210]
 
-    This schema defines the content of the HTTP request that the Logic App is expecting. The request body comprises the ID of a boiler part, the number of items to reserve, and the ID of the engineer making the request. The Power Apps app will send this request when an engineer wants to reserve a part.
+    This schema defines the content of the HTTP request that the Logic App is expecting. The request body comprises the ID of a boiler part, the number of items to reserve, and the ID of the engineer making the request. The app will send this request when an engineer wants to reserve a part.
 
 11. In the **Choose an operation** box, select **All**, and then select **HTTP**:
 
     ![SelectH tthe HTTP operation option][211]
 
-    The Logic App will call the **BoilerParts{id}** operation of the Web API to retrieve information about the boiler part provided by the request from the Power Apps app.
+    The Logic App will call the **BoilerParts{id}** operation of the Web API to retrieve information about the boiler part provided by the request from the app.
 
 12. In the **Actions** pane, select the **HTTP** action:
 
@@ -3573,7 +3573,7 @@ To create the Logic App, Kiana uses the following steps:
 
 42. In the top left of the **Logic Apps Designer** page, select **Save**. Verify that the Logic App saves without any errors.
 
-To create the custom connector that the Power Apps app can use to trigger the Logic App, Kiana performs the following steps while still in the Azure portal:
+To create the custom connector that the app can use to trigger the Logic App, Kiana performs the following steps while still in the Azure portal:
 
 1.  On the **Overview** page for the Logic App, select **Export**.
 
@@ -3678,7 +3678,7 @@ The app is now functionally complete, but Preeti and Kiana want to ensure that t
 
 ## Protecting the App and Resources
 
-When you first sign in to Power Apps, you're required to authenticate yourself, typically by providing your email address and password. Office 365 utilizes its own Azure AD domain; each organization has its own domain. Your credentials are checked against your organization's domain for Office 365. A Power Apps app can only access the Office 365 resources to which you've been granted the appropriate authority. Authorization is managed by your Office 365 Administrator (Preeti in the VanArsdel scenario). For more information, read **Securing the app and data** at <https://aka.ms/AAbvtkm>.
+When you first sign in to Power Apps, you're required to authenticate yourself, typically by providing your email address and password. Office 365 utilizes its own Azure AD domain; each organization has its own domain. Your credentials are checked against your organization's domain for Office 365. Power Apps can only access the Office 365 resources to which you've been granted the appropriate authority. Authorization is managed by your Office 365 Administrator (Preeti in the VanArsdel scenario). For more information, read **Securing the app and data** at <https://aka.ms/AAbvtkm>.
 
 The Azure resources that an app accesses are also subject to authorization. Services such as Azure Storage require an application to provide an access key. Additionally, many services can be protected through role-based access control (RBAC), which describes the operations that individual users and groups can perform. The IT Operations Manager (Preeti, again) can set the authorization policy that defines which accounts and machines can connect to services such as Azure SQL Database, Azure Blob Storage, Azure API Management, and Azure App Services. Some services also enable you to restrict the endpoints from which authenticated users can request access. For example, you can configure a firewall for Azure SQL Database to deny access to requests emanating from unexpected IP addresses.
 
@@ -3688,7 +3688,7 @@ Data at rest, in storage accounts, databases, and other services in Azure, can a
 
 ## Personalizing the App
 
-When someone runs a Power Apps app, it can retrieve information about the user from the Office365 environment. This information can be used to personalize the app. For example, currently the app that Maria and Kiana have developed doesn't distinguish between the different users; they all have access to the same data. Ideally, the app should be personalized to display the information most relevant to the engineer who uses it. Power Apps provides a function named **User** that enables the app to retrieve the email and full name of the current user. This app also requires the user ID (a unique Guid assigned to each user). The rationale behind this requirement is that usernames can be changed, but the ID cannot. The user ID is accessible using the features provided by the **Office365** connector. The steps below illustrate how to add this connector to the app:
+When someone runs an app, it can retrieve information about the user from the Office365 environment. This information can be used to personalize the app. For example, currently the app that Maria and Kiana have developed doesn't distinguish between the different users; they all have access to the same data. Ideally, the app should be personalized to display the information most relevant to the engineer who uses it. Power Apps provides a function named **User** that enables the app to retrieve the email and full name of the current user. This app also requires the user ID (a unique Guid assigned to each user). The rationale behind this requirement is that usernames can be changed, but the ID cannot. The user ID is accessible using the features provided by the **Office365** connector. The steps below illustrate how to add this connector to the app:
 
 1.  Using Power Apps Studio, in the **Tree view** pane, select the **Home** screen.
 
@@ -3763,7 +3763,7 @@ The app is now ready to deploy and roll out.
 
 ## Deploying the App
 
-The simplest way to deploy an app is to publish it to your Office 365 domain. All users who have the **Can use** permission can run the app, either from Power Apps Studio, or by using the Microsoft **Power Apps** app, available in the Windows Store at <https://aka.ms/AAbvtko>. Power Apps can be run on mobile devices like tablets and phones as soon as they're published; users only need find the Power Apps app in their devices' app store.
+The simplest way to deploy an app is to publish it to your Office 365 domain. All users who have the **Can use** permission can run the app, either from Power Apps Studio, or by using the Microsoft **Power Apps** app, available in the Windows Store at <https://aka.ms/AAbvtko>. Power Apps can be run on mobile devices like tablets and phones as soon as they're published; users only need find the app in their devices' app store.
 
 To publish an app:
 
