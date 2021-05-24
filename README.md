@@ -1,6 +1,6 @@
 # Field Engineer Web API
 
-This repo stores the code for a simple Web API that presents information helpful to heating engineers working in the field to maintain and fix furnaces in domestic settings. This API supports the document **The fusion development approach to building power apps**. In the document, the development of Power Apps, which integrates with this Web API, is described.
+This repo stores the code for a simple Web API that presents information helpful to heating engineers working in the field to maintain and fix furnaces in domestic settings. This API supports the document **[The fusion development approach to building power apps](https://docs.microsoft.com/en-gb/powerapps/guidance/fusion-dev-ebook/)**. In the document, the development of Power Apps, which integrates with this Web API, is described.
 
 This repo also includes the JSON definition for the Logic App created in the document.
 
