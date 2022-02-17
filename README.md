@@ -64,7 +64,7 @@ The Web API requires three SQL databases:
 
 You can set up these databases in Azure SQL Database by following these steps:
 
-1. Long into the [Azure Portal](https://portal.azure.com) with your usual credentials.
+1. Log into the [Azure Portal](https://portal.azure.com) with your usual credentials.
 1. Start the **Cloud Shell** and select the **PowerShell** environment.
 1. To clone the source code in the Cloud Shell, enter these commands:
 
