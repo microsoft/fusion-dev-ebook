@@ -31,7 +31,7 @@ Any use of third-party trademarks or logos are subject to those third-party's po
 You will need the following software on your computer:
 
 - PowerShell
-- .NET 5.0
+- .NET 6.0
 - A Git client
 - Visual Studio Code together with the following extensions:
     - The C# extension, available at https://aka.ms/AAbvu72.  
@@ -113,7 +113,7 @@ You can either follow the steps in the guide to build the Web API, or you can us
 1. To open the Azure Tools, in Visual Studio Code press **CTRL + SHIFT + A** and then select the **APP SERVICE** window.
 1. Right-click your subscription, and then select **Create New Web app**.
 1. Enter a name for the Web app and then press **Enter**.
-1. Select the **.NET 5** runtime stack and then select the **Free** pricing tier. Azure creates the new Web app.
+1. Select the **.NET 6** runtime stack and then select the **Free** pricing tier. Azure creates the new Web app.
 1. Right-click the new Web app, and then select **Deploy to Web App**.
 1. In the Visual Studio Code dialog, select **Deploy**. Visual Studio Code deploys the Web API to Azure.
 
