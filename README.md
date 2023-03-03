@@ -117,6 +117,12 @@ You can either follow the steps in the guide to build the Web API, or you can us
 1. Right-click the new Web app, and then select **Deploy to Web App**.
 1. In the Visual Studio Code dialog, select **Deploy**. Visual Studio Code deploys the Web API to Azure.
 
+### Configure the Web API in Azure App Service
+1. In the Azure Portal, go to the Web API and select Configuration screen under Settings.
+1. Click **New connection string** and create an entry for each connection string from the appsettings.json file (x3). Use Type **SQLAzure**.
+1. Save the Configuration page.
+
+
 ### Example API calls
 
 You can examine and experiment with the Field Engineer Web API by using the Swagger user interface:
@@ -146,7 +152,7 @@ curl -X GET "https://<yourwebapp>.azurewebsites.net/api/scheduleengineer" -H "ac
 To see a list of all customers and obtain their IDs, use:
 
 ```powershell
-curl -X GET "https://<yourwebapp>.azurewebsites.net/api/customers" -H "accept: text/plain"
+curl -X GET "https://<yourwebapp>.azurewebsites.net/api/customer" -H "accept: text/plain"
 ```
 
 To see a list of all the problems and solutions for a given customer, use:
